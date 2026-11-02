@@ -1,0 +1,824 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pattern-consumer
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny
+  namespace: pattern-consumer
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pattern-provider
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny
+  namespace: pattern-provider
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: order-api
+  namespace: pattern-consumer
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-api
+  namespace: pattern-consumer
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: order-api
+  template:
+    metadata:
+      labels:
+        app: order-api
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: order-api
+        image: course-pattern:0.1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8443
+        env:
+        - name: PATTERN_CONFIG
+          value: /run/pattern/config.json
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: '1'
+            memory: 512Mi
+        volumeMounts:
+        - name: config
+          mountPath: /run/pattern
+          readOnly: true
+        - name: data
+          mountPath: /data
+        - name: tmp
+          mountPath: /tmp
+        readinessProbe:
+          httpGet:
+            scheme: HTTPS
+            path: /health
+            port: 8443
+          initialDelaySeconds: 3
+        livenessProbe:
+          httpGet:
+            scheme: HTTPS
+            path: /health
+            port: 8443
+          initialDelaySeconds: 15
+      volumes:
+      - name: config
+        secret:
+          secretName: order-api-config
+          defaultMode: 288
+      - name: data
+        persistentVolumeClaim:
+          claimName: order-api
+      - name: tmp
+        emptyDir:
+          medium: Memory
+          sizeLimit: 32Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-api
+  namespace: pattern-consumer
+spec:
+  selector:
+    app: order-api
+  ports:
+  - port: 8443
+    targetPort: 8443
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: order-api
+  namespace: pattern-consumer
+spec:
+  podSelector:
+    matchLabels:
+      app: order-api
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: pattern-consumer
+      podSelector:
+        matchLabels:
+          app: nextcloud
+    ports: &id001
+    - protocol: TCP
+      port: 8443
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: pattern-consumer
+      podSelector:
+        matchLabels:
+          app: prometheus
+    ports: *id001
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: pattern-consumer
+      podSelector:
+        matchLabels:
+          app: identity-policy
+    ports: *id001
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: pattern-consumer
+      podSelector:
+        matchLabels:
+          app: security-crypto
+    ports: *id001
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: kube-system
+      podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 53
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: identity-policy
+  namespace: pattern-consumer
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: identity-policy
+  namespace: pattern-consumer
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: identity-policy
+  template:
+    metadata:
+      labels:
+        app: identity-policy
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: identity-policy
+        image: course-pattern:0.1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8443
+        env:
+        - name: PATTERN_CONFIG
+          value: /run/pattern/config.json
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: '1'
+            memory: 512Mi
+        volumeMounts:
+        - name: config
+          mountPath: /run/pattern
+          readOnly: true
+        - name: data
+          mountPath: /data
+        - name: tmp
+          mountPath: /tmp
+        readinessProbe:
+          httpGet:
+            scheme: HTTPS
+            path: /health
+            port: 8443
+          initialDelaySeconds: 3
+        livenessProbe:
+          httpGet:
+            scheme: HTTPS
+            path: /health
+            port: 8443
+          initialDelaySeconds: 15
+      volumes:
+      - name: config
+        secret:
+          secretName: identity-policy-config
+          defaultMode: 288
+      - name: data
+        persistentVolumeClaim:
+          claimName: identity-policy
+      - name: tmp
+        emptyDir:
+          medium: Memory
+          sizeLimit: 32Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: identity-policy
+  namespace: pattern-consumer
+spec:
+  selector:
+    app: identity-policy
+  ports:
+  - port: 8443
+    targetPort: 8443
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: identity-policy
+  namespace: pattern-consumer
+spec:
+  podSelector:
+    matchLabels:
+      app: identity-policy
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: pattern-consumer
+      podSelector:
+        matchLabels:
+          app: order-api
+    ports: &id001
+    - protocol: TCP
+      port: 8443
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: pattern-consumer
+      podSelector:
+        matchLabels:
+          app: security-crypto
+    ports: *id001
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: pattern-consumer
+      podSelector:
+        matchLabels:
+          app: prometheus
+    ports: *id001
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: kube-system
+      podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 53
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: security-crypto
+  namespace: pattern-consumer
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security-crypto
+  namespace: pattern-consumer
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: security-crypto
+  template:
+    metadata:
+      labels:
+        app: security-crypto
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: security-crypto
+        image: course-pattern:0.1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8443
+        env:
+        - name: PATTERN_CONFIG
+          value: /run/pattern/config.json
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: '1'
+            memory: 768Mi
+        volumeMounts:
+        - name: config
+          mountPath: /run/pattern
+          readOnly: true
+        - name: data
+          mountPath: /data
+        - name: tmp
+          mountPath: /tmp
+        readinessProbe:
+          httpGet:
+            scheme: HTTPS
+            path: /health
+            port: 8443
+          initialDelaySeconds: 3
+        livenessProbe:
+          httpGet:
+            scheme: HTTPS
+            path: /health
+            port: 8443
+          initialDelaySeconds: 15
+      volumes:
+      - name: config
+        secret:
+          secretName: security-crypto-config
+          defaultMode: 288
+      - name: data
+        persistentVolumeClaim:
+          claimName: security-crypto
+      - name: tmp
+        emptyDir:
+          medium: Memory
+          sizeLimit: 32Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: security-crypto
+  namespace: pattern-consumer
+spec:
+  selector:
+    app: security-crypto
+  ports:
+  - port: 8443
+    targetPort: 8443
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: security-crypto
+  namespace: pattern-consumer
+spec:
+  podSelector:
+    matchLabels:
+      app: security-crypto
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: pattern-consumer
+      podSelector:
+        matchLabels:
+          app: order-api
+    ports: &id001
+    - protocol: TCP
+      port: 8443
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: pattern-consumer
+      podSelector:
+        matchLabels:
+          app: prometheus
+    ports: *id001
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: pattern-consumer
+      podSelector:
+        matchLabels:
+          app: identity-policy
+    ports: *id001
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: pattern-provider
+      podSelector:
+        matchLabels:
+          app: cloud-storage
+    ports: *id001
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: pattern-consumer
+      podSelector:
+        matchLabels:
+          app: audit
+    ports: *id001
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: kube-system
+      podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 53
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cloud-storage
+  namespace: pattern-provider
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-storage
+  namespace: pattern-provider
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: cloud-storage
+  template:
+    metadata:
+      labels:
+        app: cloud-storage
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: cloud-storage
+        image: course-pattern:0.1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8443
+        env:
+        - name: PATTERN_CONFIG
+          value: /run/pattern/config.json
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: '1'
+            memory: 512Mi
+        volumeMounts:
+        - name: config
+          mountPath: /run/pattern
+          readOnly: true
+        - name: data
+          mountPath: /data
+        - name: tmp
+          mountPath: /tmp
+        readinessProbe:
+          httpGet:
+            scheme: HTTPS
+            path: /health
+            port: 8443
+          initialDelaySeconds: 3
+        livenessProbe:
+          httpGet:
+            scheme: HTTPS
+            path: /health
+            port: 8443
+          initialDelaySeconds: 15
+      volumes:
+      - name: config
+        secret:
+          secretName: cloud-storage-config
+          defaultMode: 288
+      - name: data
+        persistentVolumeClaim:
+          claimName: cloud-storage
+      - name: tmp
+        emptyDir:
+          medium: Memory
+          sizeLimit: 32Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloud-storage
+  namespace: pattern-provider
+spec:
+  selector:
+    app: cloud-storage
+  ports:
+  - port: 8443
+    targetPort: 8443
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: cloud-storage
+  namespace: pattern-provider
+spec:
+  podSelector:
+    matchLabels:
+      app: cloud-storage
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: pattern-consumer
+      podSelector:
+        matchLabels:
+          app: security-crypto
+    ports: &id001
+    - protocol: TCP
+      port: 8443
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: pattern-consumer
+      podSelector:
+        matchLabels:
+          app: prometheus
+    ports: *id001
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: kube-system
+      podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 53
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: audit
+  namespace: pattern-consumer
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: audit
+  namespace: pattern-consumer
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: audit
+  template:
+    metadata:
+      labels:
+        app: audit
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: audit
+        image: course-pattern:0.1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8443
+        env:
+        - name: PATTERN_CONFIG
+          value: /run/pattern/config.json
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: '1'
+            memory: 512Mi
+        volumeMounts:
+        - name: config
+          mountPath: /run/pattern
+          readOnly: true
+        - name: data
+          mountPath: /data
+        - name: tmp
+          mountPath: /tmp
+        readinessProbe:
+          httpGet:
+            scheme: HTTPS
+            path: /health
+            port: 8443
+          initialDelaySeconds: 3
+        livenessProbe:
+          httpGet:
+            scheme: HTTPS
+            path: /health
+            port: 8443
+          initialDelaySeconds: 15
+      volumes:
+      - name: config
+        secret:
+          secretName: audit-config
+          defaultMode: 288
+      - name: data
+        persistentVolumeClaim:
+          claimName: audit
+      - name: tmp
+        emptyDir:
+          medium: Memory
+          sizeLimit: 32Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: audit
+  namespace: pattern-consumer
+spec:
+  selector:
+    app: audit
+  ports:
+  - port: 8443
+    targetPort: 8443
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: audit
+  namespace: pattern-consumer
+spec:
+  podSelector:
+    matchLabels:
+      app: audit
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: pattern-consumer
+      podSelector:
+        matchLabels:
+          app: security-crypto
+    ports: &id001
+    - protocol: TCP
+      port: 8443
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: pattern-consumer
+      podSelector:
+        matchLabels:
+          app: prometheus
+    ports: *id001
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: kube-system
+      podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 53

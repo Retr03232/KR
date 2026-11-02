@@ -1,0 +1,38 @@
+global:
+  scrape_interval: 15s
+scrape_configs:
+- job_name: order-api
+  scheme: https
+  tls_config:
+    ca_file: /etc/prometheus/pattern-ca.pem
+  static_configs:
+  - targets:
+    - order-api:8443
+- job_name: identity-policy
+  scheme: https
+  tls_config:
+    ca_file: /etc/prometheus/pattern-ca.pem
+  static_configs:
+  - targets:
+    - identity-policy:8443
+- job_name: security-crypto
+  scheme: https
+  tls_config:
+    ca_file: /etc/prometheus/pattern-ca.pem
+  static_configs:
+  - targets:
+    - security-crypto:8443
+- job_name: cloud-storage
+  scheme: https
+  tls_config:
+    ca_file: /etc/prometheus/pattern-ca.pem
+  static_configs:
+  - targets:
+    - cloud-storage:8443
+- job_name: audit
+  scheme: https
+  tls_config:
+    ca_file: /etc/prometheus/pattern-ca.pem
+  static_configs:
+  - targets:
+    - audit:8443

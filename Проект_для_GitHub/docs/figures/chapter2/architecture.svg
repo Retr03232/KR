@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="720" height="480" preserveAspectRatio="xMinYMin meet" viewBox="0 0 720 480" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="720" height="480"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-480)" style="clip-path: url(#clip)">
+		<g transform="">
+			<circle cx="65" cy="463" r="8" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<polygon points="53 451, 77 451, 81 428, 49 428" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<text x="65.0" y="411" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,822) scale(1,-1)"></text>
+			<text x="30.0546875" y="417" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,834) scale(1,-1)">Пользователь</text>
+			<rect x="12" y="330" width="122" height="54" rx="6" ry="6" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.85; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<path d="M 12,363 L 134,363 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.65;"/>
+			<text x="48.0068359375" y="369" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,738) scale(1,-1)">Nextcloud</text>
+			<text x="36.38525390625" y="348" style="font-family: TNR; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,696) scale(1,-1)">Папка Protected</text>
+			<path d="M 56,409 L 56,384 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="56 384, 58.33651 389.5264, 53.66349 389.5264" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<rect x="6.380859375" y="390" width="35.23828125" height="13" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="9.380859375" y="393" style="font-family: TNR; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,786) scale(1,-1)">Запрос</text>
+			<path d="M 83,384 L 83,409 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; stroke-dasharray: 4, 3;"/>
+			<path d="M 80.66349,403.473634 L 83,409 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 83,409 L 85.33651,403.473634 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<rect x="94.43896484375" y="390" width="31.1220703125" height="13" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="97.43896484375" y="393" style="font-family: TNR; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,786) scale(1,-1)">Ответ</text>
+			<circle cx="45" cy="193" r="8" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<polygon points="33 181, 57 181, 61 158, 29 158" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<rect x="28" y="197" width="34" height="3" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<polygon points="34 200, 38 211, 52 211, 56 200" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<text x="45.0" y="141" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,282) scale(1,-1)"></text>
+			<text x="16.1572265625" y="133" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,266) scale(1,-1)">Нарушитель</text>
+			<rect x="158" y="13" width="390" height="401" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: none; fill-rule: evenodd;"/>
+			<text x="301.5400390625" y="422" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,844) scale(1,-1)">Сервер потребителя</text>
+			<rect x="570" y="151" width="143" height="263" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: none; fill-rule: evenodd;"/>
+			<text x="596.6640625" y="422" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,844) scale(1,-1)">Облачный сервер</text>
+			<rect x="505" y="353" width="28" height="42" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<path d="M 510,361 L 528,361 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1.4;"/>
+			<circle cx="510" cy="366" r="1.2" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<path d="M 510,371 L 528,371 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1.4;"/>
+			<circle cx="510" cy="376" r="1.2" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<path d="M 510,381 L 528,381 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1.4;"/>
+			<circle cx="510" cy="386" r="1.2" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<rect x="675" y="353" width="28" height="42" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<path d="M 680,361 L 698,361 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1.4;"/>
+			<circle cx="680" cy="366" r="1.2" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<path d="M 680,371 L 698,371 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1.4;"/>
+			<circle cx="680" cy="376" r="1.2" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<path d="M 680,381 L 698,381 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1.4;"/>
+			<circle cx="680" cy="386" r="1.2" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<rect x="180" y="330" width="150" height="54" rx="6" ry="6" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.85; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<path d="M 180,363 L 330,363 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.65;"/>
+			<text x="231.180419921875" y="369" style="font-family: TNR; font-size: 13px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,738) scale(1,-1)">order-api</text>
+			<text x="213.755859375" y="348" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,696) scale(1,-1)">Приём запросов</text>
+			<rect x="180" y="225" width="150" height="62" rx="6" ry="6" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.85; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<path d="M 180,266 L 330,266 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.65;"/>
+			<text x="215.654052734375" y="272" style="font-family: TNR; font-size: 13px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,544) scale(1,-1)">security-crypto</text>
+			<text x="200.7978515625" y="251" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,502) scale(1,-1)">Сервис безопасности</text>
+			<text x="196.7958984375" y="236" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,472) scale(1,-1)">Шифрование и выдача</text>
+			<rect x="365" y="225" width="160" height="62" rx="6" ry="6" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.85; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<path d="M 365,266 L 525,266 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.65;"/>
+			<text x="406.72998046875" y="272" style="font-family: TNR; font-size: 13px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,544) scale(1,-1)">identity-policy</text>
+			<text x="385.24609375" y="251" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,502) scale(1,-1)">Проверка пользователя</text>
+			<text x="392.7841796875" y="236" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,472) scale(1,-1)">и права на документ</text>
+			<rect x="180" y="118" width="150" height="52" rx="6" ry="6" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.85; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<path d="M 180,149 L 330,149 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.65;"/>
+			<text x="242.003173828125" y="155" style="font-family: TNR; font-size: 13px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,310) scale(1,-1)">audit</text>
+			<text x="199.9072265625" y="134" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,268) scale(1,-1)">Регистрация событий</text>
+			<rect x="582" y="225" width="119" height="62" rx="6" ry="6" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.85; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<path d="M 582,266 L 701,266 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.65;"/>
+			<text x="608.845703125" y="272" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,544) scale(1,-1)">cloud-storage</text>
+			<text x="618.62451171875" y="251" style="font-family: TNR; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,502) scale(1,-1)">Хранение</text>
+			<text x="607.54931640625" y="237" style="font-family: TNR; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,474) scale(1,-1)">шифротекстов</text>
+			<rect x="619" y="175" width="46" height="34" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<ellipse cx="642.0" cy="175.0" rx="23.0" ry="7.0" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<ellipse cx="642.0" cy="209.0" rx="23.0" ry="7.0" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1.4; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="642.0" y="149" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,298) scale(1,-1)"></text>
+			<text x="606.169921875" y="158" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,316) scale(1,-1)">База объектов</text>
+			<rect x="365" y="118" width="160" height="52" rx="6" ry="6" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.85; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<path d="M 365,149 L 525,149 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.65;"/>
+			<text x="403.5009765625" y="155" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,310) scale(1,-1)">Ключи и версии</text>
+			<text x="410.58203125" y="134" style="font-family: TNR; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,268) scale(1,-1)">У потребителя</text>
+			<rect x="365" y="30" width="160" height="43" rx="6" ry="6" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.85; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="385.4921875" y="47.5" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,95) scale(1,-1)">Удостоверения и права</text>
+			<rect x="180" y="30" width="150" height="43" rx="6" ry="6" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.85; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="202.5703125" y="47.5" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,95) scale(1,-1)">Доверенный журнал</text>
+			<path d="M 134,368 L 180,368 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="180 368, 174.4736 370.3365, 174.4736 365.6635" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<rect x="132.72900390625" y="377" width="46.5419921875" height="13" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="135.72900390625" y="380" style="font-family: TNR; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,760) scale(1,-1)">WebDAV</text>
+			<path d="M 180,347 L 134,347 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; stroke-dasharray: 4, 3;"/>
+			<path d="M 139.526366,344.66349 L 134,347 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 134,347 L 139.526366,349.33651 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<rect x="140.43896484375" y="349" width="31.1220703125" height="13" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="143.43896484375" y="352" style="font-family: TNR; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,704) scale(1,-1)">Ответ</text>
+			<path d="M 75,190 L 118,190 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 118,190 L 118,310 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 118,310 L 200,310 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 200,310 L 200,330 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="200 330, 197.6635 324.4736, 202.3365 324.4736" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<rect x="35.1982421875" y="258" width="75.603515625" height="30" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="38.1982421875" y="276" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,552) scale(1,-1)">С2: облачные</text>
+			<text x="46.1435546875" y="261" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,522) scale(1,-1)">реквизиты</text>
+			<path d="M 180,336 L 145,336 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; stroke-dasharray: 4, 3;"/>
+			<path d="M 145,336 L 145,162 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; stroke-dasharray: 4, 3;"/>
+			<path d="M 145,162 L 75,162 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; stroke-dasharray: 4, 3;"/>
+			<path d="M 80.526366,159.66349 L 75,162 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 75,162 L 80.526366,164.33651 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<rect x="90.0966796875" y="142" width="35.806640625" height="15" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="93.0966796875" y="145" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,290) scale(1,-1)">Отказ</text>
+			<path d="M 255,330 L 255,287 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="255 287, 257.3365 292.5264, 252.6635 292.5264" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<rect x="232.02587890625" y="302" width="91.9482421875" height="14" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="235.02587890625" y="305" style="font-family: TNR; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,610) scale(1,-1)">Запрос / результат</text>
+			<path d="M 330,270 L 345,270 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 345,270 L 345,315 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 345,315 L 445,315 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 445,315 L 445,287 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="445 287, 447.3365 292.5264, 442.6635 292.5264" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<rect x="392.0166015625" y="324" width="83.966796875" height="14" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="395.0166015625" y="327" style="font-family: TNR; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,654) scale(1,-1)">Право / решение</text>
+			<path d="M 330,246 L 348,246 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 348,246 L 348,197 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 348,197 L 559,197 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 559,197 L 559,256 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 559,256 L 582,256 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="582 256, 576.4736 258.3365, 576.4736 253.6635" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<rect x="369.232177734375" y="202" width="167.53564453125" height="14" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="372.232177734375" y="205" style="font-family: TNR; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,410) scale(1,-1)">TLS: запись / чтение шифротекста</text>
+			<path d="M 642,225 L 642,218 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="642 218, 644.3365 223.5264, 639.6635 223.5264" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<rect x="660.42626953125" y="210" width="37.1474609375" height="13" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="663.42626953125" y="213" style="font-family: TNR; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,426) scale(1,-1)">Объект</text>
+			<path d="M 255,225 L 255,170 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="255 170, 257.3365 175.5264, 252.6635 175.5264" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<rect x="189.970947265625" y="190" width="128.05810546875" height="14" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="192.970947265625" y="193" style="font-family: TNR; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,386) scale(1,-1)">Событие / подтверждение</text>
+			<path d="M 330,365 L 352,365 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 352,365 L 352,398 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 352,398 L 490,398 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 490,398 L 490,287 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="490 287, 492.3365 292.5264, 487.6635 292.5264" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<rect x="360.80224609375" y="404" width="116.3955078125" height="13" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="363.80224609375" y="407" style="font-family: TNR; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,814) scale(1,-1)">Учётная запись / решение</text>
+			<path d="M 319,225 L 319,182 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 319,182 L 445,182 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 445,182 L 445,170 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="445 170, 447.3365 175.5264, 442.6635 175.5264" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<rect x="390.492919921875" y="174" width="107.01416015625" height="14" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="393.492919921875" y="177" style="font-family: TNR; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,354) scale(1,-1)">Ключ / запись версии</text>
+			<path d="M 525,238 L 537,238 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 537,238 L 537,91 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 537,91 L 445,91 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<path d="M 445,91 L 445,73 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="445 73, 447.3365 78.52637, 442.6635 78.52637" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<rect x="455.626708984375" y="95" width="50.74658203125" height="14" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="458.626708984375" y="98" style="font-family: TNR; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,196) scale(1,-1)">Проверка</text>
+			<path d="M 255,118 L 255,73 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="255 73, 257.3365 78.52637, 252.6635 78.52637" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<rect x="264.96728515625" y="88" width="38.0654296875" height="14" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="267.96728515625" y="91" style="font-family: TNR; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,182) scale(1,-1)">Запись</text>
+			<text x="592.6494140625" y="107" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,214) scale(1,-1)">Ключи и открытый</text>
+			<text x="594.884765625" y="92" style="font-family: TNR; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,184) scale(1,-1)">текст отсутствуют</text>
+			<text x="600.720458984375" y="59" style="font-family: TNR; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,118) scale(1,-1)">Пунктир — ответ</text>
+			<text x="592.6826171875" y="45" style="font-family: TNR; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,90) scale(1,-1)">внешнему участнику</text>
+		</g>
+	</g>
+</svg>

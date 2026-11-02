@@ -1,0 +1,170 @@
+name: course-pattern
+services:
+  order-api:
+    build: .
+    image: course-pattern:0.1.0
+    init: true
+    restart: unless-stopped
+    read_only: true
+    cap_drop:
+    - ALL
+    security_opt:
+    - no-new-privileges:true
+    tmpfs:
+    - /tmp:size=32m
+    volumes:
+    - ./.runtime/order-api:/run/pattern:ro
+    - order-api-data:/data
+    networks:
+    - link-0
+    - link-1
+    - monitoring
+    - frontend
+    healthcheck:
+      test:
+      - CMD
+      - python
+      - -c
+      - import ssl,urllib.request; urllib.request.urlopen('https://localhost:8443/health',context=ssl.create_default_context(cafile='/run/pattern/ca.pem'))
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    mem_limit: 512m
+    ports:
+    - 127.0.0.1:8444:8443
+  identity-policy:
+    build: .
+    image: course-pattern:0.1.0
+    init: true
+    restart: unless-stopped
+    read_only: true
+    cap_drop:
+    - ALL
+    security_opt:
+    - no-new-privileges:true
+    tmpfs:
+    - /tmp:size=32m
+    volumes:
+    - ./.runtime/identity-policy:/run/pattern:ro
+    - identity-policy-data:/data
+    networks:
+    - link-0
+    - link-2
+    - monitoring
+    healthcheck:
+      test:
+      - CMD
+      - python
+      - -c
+      - import ssl,urllib.request; urllib.request.urlopen('https://localhost:8443/health',context=ssl.create_default_context(cafile='/run/pattern/ca.pem'))
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    mem_limit: 512m
+  security-crypto:
+    build: .
+    image: course-pattern:0.1.0
+    init: true
+    restart: unless-stopped
+    read_only: true
+    cap_drop:
+    - ALL
+    security_opt:
+    - no-new-privileges:true
+    tmpfs:
+    - /tmp:size=32m
+    volumes:
+    - ./.runtime/security-crypto:/run/pattern:ro
+    - security-crypto-data:/data
+    networks:
+    - link-1
+    - link-2
+    - link-3
+    - link-4
+    - monitoring
+    healthcheck:
+      test:
+      - CMD
+      - python
+      - -c
+      - import ssl,urllib.request; urllib.request.urlopen('https://localhost:8443/health',context=ssl.create_default_context(cafile='/run/pattern/ca.pem'))
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    mem_limit: 768m
+  cloud-storage:
+    build: .
+    image: course-pattern:0.1.0
+    init: true
+    restart: unless-stopped
+    read_only: true
+    cap_drop:
+    - ALL
+    security_opt:
+    - no-new-privileges:true
+    tmpfs:
+    - /tmp:size=32m
+    volumes:
+    - ./.runtime/cloud-storage:/run/pattern:ro
+    - cloud-storage-data:/data
+    networks:
+    - link-3
+    - monitoring
+    healthcheck:
+      test:
+      - CMD
+      - python
+      - -c
+      - import ssl,urllib.request; urllib.request.urlopen('https://localhost:8443/health',context=ssl.create_default_context(cafile='/run/pattern/ca.pem'))
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    mem_limit: 512m
+  audit:
+    build: .
+    image: course-pattern:0.1.0
+    init: true
+    restart: unless-stopped
+    read_only: true
+    cap_drop:
+    - ALL
+    security_opt:
+    - no-new-privileges:true
+    tmpfs:
+    - /tmp:size=32m
+    volumes:
+    - ./.runtime/audit:/run/pattern:ro
+    - audit-data:/data
+    networks:
+    - link-4
+    - monitoring
+    healthcheck:
+      test:
+      - CMD
+      - python
+      - -c
+      - import ssl,urllib.request; urllib.request.urlopen('https://localhost:8443/health',context=ssl.create_default_context(cafile='/run/pattern/ca.pem'))
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    mem_limit: 512m
+networks:
+  link-0:
+    internal: true
+  link-1:
+    internal: true
+  monitoring:
+    internal: true
+  frontend: {}
+  link-2:
+    internal: true
+  link-3:
+    internal: true
+  link-4:
+    internal: true
+volumes:
+  order-api-data: {}
+  identity-policy-data: {}
+  security-crypto-data: {}
+  cloud-storage-data: {}
+  audit-data: {}

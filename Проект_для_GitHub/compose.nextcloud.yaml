@@ -1,0 +1,73 @@
+services:
+  nextcloud:
+    image: nextcloud:33-apache
+    profiles:
+    - nextcloud
+    env_file:
+    - .runtime/nextcloud.env
+    environment:
+      POSTGRES_HOST: nextcloud-db
+      POSTGRES_DB: nextcloud
+      POSTGRES_USER: nextcloud
+      NEXTCLOUD_ADMIN_USER: admin
+      NEXTCLOUD_TRUSTED_DOMAINS: localhost 127.0.0.1
+      OVERWRITEPROTOCOL: https
+    entrypoint:
+    - /bin/sh
+    - /pattern-entrypoint.sh
+    command:
+    - apache2-foreground
+    volumes:
+    - nextcloud-data:/var/www/html
+    - ./.runtime/ca.pem:/tmp/pattern-ca.pem:ro
+    - ./deploy/nextcloud-entrypoint.sh:/pattern-entrypoint.sh:ro
+    networks:
+    - frontend
+    - nextcloud-db
+    depends_on:
+    - nextcloud-db
+  nextcloud-db:
+    image: postgres:16-alpine
+    profiles:
+    - nextcloud
+    env_file:
+    - .runtime/nextcloud.env
+    environment:
+      POSTGRES_DB: nextcloud
+      POSTGRES_USER: nextcloud
+    volumes:
+    - nextcloud-db:/var/lib/postgresql/data
+    networks:
+    - nextcloud-db
+  frontend:
+    image: caddy:2-alpine
+    profiles:
+    - nextcloud
+    volumes:
+    - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+    - ./.runtime/frontend:/certs:ro
+    ports:
+    - 127.0.0.1:8443:443
+    networks:
+    - frontend
+    depends_on:
+    - nextcloud
+  prometheus:
+    image: prom/prometheus:v3.5.0
+    profiles:
+    - monitoring
+    volumes:
+    - ./deploy/prometheus.yaml:/etc/prometheus/prometheus.yml:ro
+    - ./.runtime/ca.pem:/etc/prometheus/pattern-ca.pem:ro
+    ports:
+    - 127.0.0.1:9090:9090
+    networks:
+    - monitoring
+    - monitoring-ui
+networks:
+  nextcloud-db:
+    internal: true
+  monitoring-ui: {}
+volumes:
+  nextcloud-data: {}
+  nextcloud-db: {}
