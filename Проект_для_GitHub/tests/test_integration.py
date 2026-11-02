@@ -36,6 +36,21 @@ def test_no_anonymous_access(stack):
     assert request(stack, 'GET', '/docs/report.txt', user=None).status_code == 401
 
 
+def test_unsupported_client_mtime_does_not_break_file_access(stack):
+    patch = '''<?xml version="1.0"?>
+    <d:propertyupdate xmlns:d="DAV:"><d:set><d:prop>
+    <d:lastmodified>1730000000</d:lastmodified>
+    </d:prop></d:set></d:propertyupdate>'''
+    assert request(stack, 'PROPPATCH', '/docs/report.txt', user=None,
+                   content=patch).status_code == 401
+    assert request(stack, 'PROPPATCH', '/docs/report.txt', content=patch,
+                   headers={'Content-Type': 'application/xml'}).status_code == 501
+    response = request(stack, 'GET', '/docs/report.txt')
+    assert response.status_code == 200 and response.content == PAYLOAD
+    assert request(stack, 'PROPFIND', '/docs/',
+                   headers={'Depth': '1'}).status_code == 207
+
+
 def test_wrong_password(stack):
     s = stack
     r = s['client'].get(s['url']['order-api'] + '/dav/', auth=('alice', 'incorrect'))

@@ -38,6 +38,15 @@ class Provider(DAVProvider):
         super().__init__()
         self.cfg = cfg
 
+    def custom_request_handler(self, environ, start_response, default_handler):
+        # Client-supplied timestamps/dead properties are not implemented.
+        # Nextcloud handles 501 as an unsupported metadata operation, whereas
+        # a failed PROPPATCH multistatus can mark the whole storage unavailable.
+        # WsgiDAV authentication runs before this dispatch hook.
+        if environ['REQUEST_METHOD'] == 'PROPPATCH':
+            raise DAVError(501)
+        return default_handler(environ, start_response)
+
     def operation(self, environ, op, path, **kwargs):
         try:
             return call(self.cfg, 'security_url', 'order_token', '/operate',

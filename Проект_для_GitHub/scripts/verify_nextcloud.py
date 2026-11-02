@@ -36,9 +36,16 @@ def verify(docker='docker'):
     path = '/remote.php/dav/files/alice/Protected/' + filename
     with httpx.Client(base_url='https://localhost:8443', verify=context,
                       trust_env=False, timeout=60) as client:
-        uploaded = client.put(path, content=content, auth=('alice', users['alice']))
+        browser_headers = {'X-OC-Mtime': '1730000000'}
+        uploaded = client.put(path, content=content, auth=('alice', users['alice']),
+                              headers=browser_headers)
         checks['nextcloud_upload_http'] = uploaded.status_code
         assert uploaded.status_code in (201, 204), checks
+        content += b'Updated\n'
+        overwritten = client.put(path, content=content, auth=('alice', users['alice']),
+                                 headers=browser_headers)
+        checks['nextcloud_overwrite_http'] = overwritten.status_code
+        assert overwritten.status_code == 204, checks
         downloaded = client.get(path, auth=('alice', users['alice']))
         checks['nextcloud_download_http'] = downloaded.status_code
         assert downloaded.status_code == 200, checks

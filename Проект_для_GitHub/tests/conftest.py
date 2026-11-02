@@ -35,6 +35,7 @@ def stack(tmp_path_factory):
         logs[role] = open(root / (role + '.log'), 'ab')
         processes[role] = subprocess.Popen([sys.executable, '-m', 'uvicorn', 'services.main:app',
             '--host', '127.0.0.1', '--port', str(ports[role]), '--no-access-log',
+            '--limit-concurrency', '64', '--timeout-keep-alive', '1',
             '--ssl-certfile', str(root / role / 'server.pem'),
             '--ssl-keyfile', str(root / role / 'server-key.pem')],
             cwd=ROOT, env=env, stdout=logs[role], stderr=subprocess.STDOUT)

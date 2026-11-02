@@ -1,3 +1,4 @@
+import asyncio
 import base64
 from contextlib import contextmanager
 import hmac
@@ -68,6 +69,21 @@ def call(cfg, target, token_name, path, payload, authorization=''):
         raise HTTPException(503, 'Dependency unavailable')
 
 
+class RequestSlots:
+    """Bound active buffered requests without counting idle HTTP connections."""
+    def __init__(self, app, limit=8):
+        self.app = app
+        self.slots = asyncio.Semaphore(limit)
+
+    async def __call__(self, scope, receive, send):
+        if scope['type'] != 'http' or scope.get('path') in ('/health', '/metrics'):
+            return await self.app(scope, receive, send)
+        # Wait before BodyLimit reads/buffers the body. Cancellation and errors
+        # release the slot; health and monitoring do not wait behind file work.
+        async with self.slots:
+            await self.app(scope, receive, send)
+
+
 class BodyLimit:
     """Limit bodies before JSON/WSGI buffering; reject chunked overflows too."""
     def __init__(self, app):
@@ -126,6 +142,7 @@ def app_base(role):
         return Response(generate_latest(registry), media_type='text/plain; version=0.0.4')
 
     app.add_middleware(BodyLimit)
+    app.add_middleware(RequestSlots)
     return app
 
 
